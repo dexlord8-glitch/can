@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-Do List Application</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="todo-app">
+            <header class="app-header">
+                <h1>My To-Do List</h1>
+                <p class="subtitle">Stay organized and productive</p>
+            </header>
+
+            <div class="input-section">
+                <div class="input-wrapper">
+                    <input 
+                        type="text" 
+                        id="todoInput" 
+                        class="todo-input" 
+                        placeholder="Add a new task..."
+                        autocomplete="off"
+                    >
+                    <button id="addBtn" class="add-button">
+                        <span class="button-text">Add Task</span>
+                        <span class="button-icon">+</span>
+                    </button>
+                </div>
+                <div class="input-error" id="errorMessage"></div>
+            </div>
+
+            <div class="filters-section">
+                <div class="filter-buttons">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="active">Active</button>
+                    <button class="filter-btn" data-filter="completed">Completed</button>
+                </div>
+                <div class="sort-buttons">
+                    <button class="sort-btn" id="sortBtn" title="Sort tasks">
+                        <span>Sort</span>
+                    </button>
+                </div>
+            </div>
+
+            <div class="stats-section">
+                <div class="stat">
+                    <span class="stat-label">Total Tasks:</span>
+                    <span class="stat-value" id="totalTasks">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Completed:</span>
+                    <span class="stat-value completed" id="completedTasks">0</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-label">Remaining:</span>
+                    <span class="stat-value active" id="remainingTasks">0</span>
+                </div>
+            </div>
+
+            <div class="todo-list" id="todoList">
+                <div class="empty-state">
+                    <div class="empty-icon">📝</div>
+                    <p>No tasks yet. Add one to get started!</p>
+                </div>
+            </div>
+
+            <div class="action-buttons">
+                <button id="clearCompleted" class="clear-btn" title="Clear all completed tasks">
+                    Clear Completed
+                </button>
+                <button id="clearAll" class="delete-all-btn" title="Delete all tasks">
+                    Delete All
+                </button>
+                <button id="exportBtn" class="export-btn" title="Export tasks as JSON">
+                    Export
+                </button>
+                <button id="importBtn" class="import-btn" title="Import tasks from JSON">
+                    Import
+                </button>
+                <input type="file" id="importFile" accept=".json" style="display: none;">
+            </div>
+
+            <footer class="app-footer">
+                <p>Tasks are automatically saved to your browser</p>
+                <p class="version">v1.0</p>
+            </footer>
+        </div>
+    </div>
+
+    <!-- Confirmation Modal -->
+    <div id="confirmModal" class="modal">
+        <div class="modal-content">
+            <h3 id="confirmTitle">Confirm Action</h3>
+            <p id="confirmMessage">Are you sure?</p>
+            <div class="modal-buttons">
+                <button id="confirmBtn" class="confirm-btn">Yes</button>
+                <button id="cancelBtn" class="cancel-btn">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast" class="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+</html>
